@@ -1,0 +1,17 @@
+#root {
+    max-width: 480px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.genreDropdown {
+    display: table-cell;
+    width: 25%;
+    vertical-align: top;
+}
+
+.search {
+    display: table;
+    width: 100%;
+}

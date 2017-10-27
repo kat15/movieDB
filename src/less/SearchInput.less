@@ -1,0 +1,37 @@
+@color-input-border: #0000FF;
+@color-search-icon: #0000FF;
+@color-search-icon-border: #0000FF;
+
+.searchInput {
+    display: table-cell;
+    width: 75%;
+    vertical-align: top;
+    position: relative;
+    overflow: hidden;
+
+    .fa-search {
+	vertical-align: top;
+	background-color: @color-search-icon;
+	padding: 5px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	border: 1px solid @color-search-icon-border;
+
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+	cursor: pointer;
+
+	&:hover {
+	    padding: 4px 5px;
+	    transform: scale(1.1);
+	    right: 1px;
+	}
+    }
+
+    input {
+	width: 100%;
+	border: 1px solid @color-input-border;
+	padding: 6px 31px 5px 5px;
+    }
+}

@@ -1,0 +1,48 @@
+ul {
+  display: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 9px;
+}
+ul.show {
+  display: block;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  border: 1px solid #1C6BA0;
+}
+li {
+  padding: 5px 8px;
+  cursor: pointer;
+}
+li:hover {
+  font-weight: bold;
+  background: #1C6BA0;
+  color: #FFFFFF;
+}
+li:first-child {
+  border-radius: 6px 0 0 0;
+}
+li:last-child {
+  border-radius: 0 0 6px 6px;
+}
+.dropdown {
+  position: relative;
+}
+.container {
+  border: 1px solid #1C6BA0;
+  background-color: #1C6BA0;
+  color: #FFFFFF;
+  padding: 5px 8px;
+  cursor: pointer;
+  border-radius: 10px 0 0 10px;
+}
+.icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+}
