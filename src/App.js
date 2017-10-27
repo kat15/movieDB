@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchInput from './components/SearchInput';
 import Dropdown from './components/Dropdown';
+import Settings from './Settings';
 
 class App extends React.Component {
 
@@ -12,6 +13,7 @@ class App extends React.Component {
 	};
 	this.changeGenre = this.changeGenre.bind(this);
 	this.changeSearch = this.changeSearch.bind(this);
+	this.search = this.search.bind(this);
     }
 
     changeGenre(newGenre) {
@@ -24,7 +26,23 @@ class App extends React.Component {
 	this.setState({
 	    search: value
 	});
+	if (value.trim() !== '') {
+	    this.searchValue(value);
+	}
     }
+
+    search() {
+	this.searchValue(this.state.search);
+    }
+
+    searchValue(value) {
+	const mDB = require('moviedb')(Settings.apiKey);
+	mDB.searchMovie({ query: value}, (err, res) => {
+	    console.log(res);
+	});
+	console.log(mDB);
+    }
+
 
     render() {
 	var genre = [
@@ -36,9 +54,9 @@ class App extends React.Component {
 	return (
 	    <div className="search">
 		<Dropdown list={genre} onChange={this.changeGenre} className='genreDropdown'/>
-		<SearchInput onChange={this.changeSearch}/>
+		<SearchInput onChange={this.changeSearch} onClick={this.search}/>
 	    </div>
 	);
     }
 }
-export default App;
+export default App;    

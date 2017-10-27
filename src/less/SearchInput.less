@@ -1,5 +1,6 @@
 @color-input-border: #0000FF;
-@color-search-icon: #0000FF;
+@color-search-icon: #FFFFFF;
+@color-search-icon-background: #0000FF;
 @color-search-icon-border: #0000FF;
 
 .searchInput {
@@ -11,12 +12,13 @@
 
     .fa-search {
 	vertical-align: top;
-	background-color: @color-search-icon;
+	background-color: @color-search-icon-background;
 	padding: 5px;
 	position: absolute;
 	top: 0;
 	right: 0;
 	border: 1px solid @color-search-icon-border;
+	color: @color-search-icon;
 
 	-webkit-transition: all 0.5s;
 	transition: all 0.5s;
@@ -26,6 +28,7 @@
 	    padding: 4px 5px;
 	    transform: scale(1.1);
 	    right: 1px;
+	    color: #000000;
 	}
     }
 
