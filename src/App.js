@@ -4,32 +4,41 @@ import Dropdown from './components/Dropdown';
 
 class App extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      total: null,
-      next: null,
-      operation: null,
-    };
-  }
+    constructor(props) {
+	super(props);
+	this.state = {
+	    genre: 'all',
+	    search: ''
+	};
+	this.changeGenre = this.changeGenre.bind(this);
+	this.changeSearch = this.changeSearch.bind(this);
+    }
 
-  handleClick = (buttonName) => {
-    console.log(buttonName);
-  }
+    changeGenre(newGenre) {
+	this.setState({
+	    genre: newGenre
+	});
+    }
 
-  render() {
-    var genre = [
-	"all",
-	"movie",
-	"tv shows",
-	"people"
-    ];
-    return (
-      <div className="search">
-	<Dropdown list={genre}/>
-	<SearchInput/>
-      </div>
-    );
-  }
+    changeSearch(value) {
+	this.setState({
+	    search: value
+	});
+    }
+
+    render() {
+	var genre = [
+	    "all",
+	    "movie",
+	    "tv shows",
+	    "people"
+	];
+	return (
+	    <div className="search">
+		<Dropdown list={genre} onChange={this.changeGenre} className='genreDropdown'/>
+		<SearchInput onChange={this.changeSearch}/>
+	    </div>
+	);
+    }
 }
 export default App;

@@ -1,0 +1,29 @@
+.searchInput {
+  display: table-cell;
+  width: 75%;
+  vertical-align: top;
+  position: relative;
+  overflow: hidden;
+}
+.searchInput .fa-search {
+  vertical-align: top;
+  background-color: #0000FF;
+  padding: 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 1px solid #0000FF;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.searchInput .fa-search:hover {
+  padding: 4px 5px;
+  transform: scale(1.1);
+  right: 1px;
+}
+.searchInput input {
+  width: 100%;
+  border: 1px solid #0000FF;
+  padding: 6px 31px 5px 5px;
+}
