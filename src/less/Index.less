@@ -1,14 +1,18 @@
-@import "colors.less";
+@import "colors";
 
 @padding: 0 15px;
 
+body {
+  background-color: @theme-color-background;
+  font-family: 'Raleway', sans-serif;
+}
+
 #root {
   padding-top: 15px;
-  max-width: 480px;
+  max-width: 1200px;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  background-color: @color-theme-background;
 }
 
 .container {
@@ -19,7 +23,6 @@
 
 .genreDropdown {
   display: none;
-  //    display: table-cell;
   width: 25%;
   vertical-align: top;
 }
@@ -27,11 +30,12 @@
 .search {
   display: table;
   width: 100%;
-  background-color: @color-theme-top-bar;
-  border-color: @color-theme-top-bar;
+  background-color: @theme-color-top-bar;
   position: relative;
   min-height: 50px;
   margin-bottom: 20px;
-  border: 1px solid transparent;
+  border: 1px solid @theme-color-top-bar;
   border-radius: 4px;
 }
+
+@import "desktop/Index";

@@ -1,4 +1,4 @@
-@import "colors.less";
+@import "colors";
 @dropdown-border-radius: 10px 0 0 10px;
 @suggester-border-radius: 9px;
 @suggester-first-child-border-radius: 6px 0 0 0;
@@ -17,8 +17,8 @@ ul {
     top: 23px;
     left: 0;
     right: 0;
-    background: @color-list-background;
-    border: 1px solid @color-list-border;
+    background: @theme-color-list-background;
+    border: 1px solid @theme-color-list-border;
     z-index: 2;
   }
 }
@@ -29,8 +29,8 @@ li {
 
   &:hover {
     font-weight: bold;
-    background: @color-suggester-hover-background;
-    color: @color-suggester-hover;
+    background: @theme-color-suggester-hover-background;
+    color: @theme-color-suggester-hover;
   }
 
   &:first-child {
@@ -46,9 +46,9 @@ li {
   position: relative;
 
   .container {
-    border: 1px solid @color-container-border;
-    background-color: @color-container-background;
-    color: @color-container;
+    border: 1px solid @theme-color-container-border;
+    background-color: @theme-color-container-background;
+    color: @theme-color;
     padding: 7px 8px;
     cursor: pointer;
     border-radius: @dropdown-border-radius;

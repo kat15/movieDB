@@ -1,10 +1,13 @@
+body {
+  background-color: #F7F7F7;
+  font-family: 'Raleway', sans-serif;
+}
 #root {
   padding-top: 15px;
-  max-width: 480px;
+  max-width: 1200px;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  background-color: #F7F7F7;
 }
 .container {
   width: auto;
@@ -20,10 +23,14 @@
   display: table;
   width: 100%;
   background-color: #19B4Cf;
-  border-color: #19B4Cf;
   position: relative;
   min-height: 50px;
   margin-bottom: 20px;
-  border: 1px solid transparent;
+  border: 1px solid #19B4Cf;
   border-radius: 4px;
+}
+@media (min-width: 1200px) {
+  #root {
+    padding-top: 50px;
+  }
 }
