@@ -8,8 +8,8 @@ export default class Dropdown extends React.Component {
 	this.state = {
 	    className: `${props.className} dropdown`,
 	    show: false,
-	    list: props.list,
-	    selected: props.selected || (props.value || props.list[0]),
+	    list: props.list || [],
+	    selected: props.selected || (props.value || (props.list ? props.list[0] : '')),
 	    dropdownMouseClick: false
 	};
 	this.showHideDropdown = this.showHideDropdown.bind(this);
@@ -57,7 +57,7 @@ export default class Dropdown extends React.Component {
 
     render() {
 	return (
-	    <div className={this.state.className} dropdown onMouseDown={this.mouseDownHandler} onMouseUp={this.mouseUpHandler}>
+	    <div className={this.state.className} onMouseDown={this.mouseDownHandler} onMouseUp={this.mouseUpHandler}>
 		<div className='container' onClick={this.showHideDropdown}>
 		    {this.state.selected}<span className='fa fa-sort icon'/>
 		</div>

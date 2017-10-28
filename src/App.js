@@ -1,22 +1,36 @@
 import React from 'react';
-import SearchInput from './components/SearchInput';
-import Dropdown from './components/Dropdown';
+import SearchBox from './components/SearchBox';
+import List from './components/List';
+import Settings from './Settings';
 
+const mDB = require('moviedb')(Settings.apiKey);
 class App extends React.Component {
 
     constructor(props) {
 	super(props);
 	this.state = {
-	    genre: 'all',
-	    search: ''
+	    genre: [
+		"all",
+		"movie",
+		"tv shows",
+		"people"
+	    ],
+	    selectedGenre: 'all',
+	    search: '',
+	    list: [],
+	    page: 1,
+	    total_pages: 1,
+	    total_results: 0
 	};
 	this.changeGenre = this.changeGenre.bind(this);
 	this.changeSearch = this.changeSearch.bind(this);
+	this.search = this.search.bind(this);
+	this.getMovieInfo = this.getMovieInfo.bind(this);
     }
 
     changeGenre(newGenre) {
 	this.setState({
-	    genre: newGenre
+	    selectedGenre: newGenre
 	});
     }
 
@@ -24,21 +38,61 @@ class App extends React.Component {
 	this.setState({
 	    search: value
 	});
+	if (value.trim() !== '') {
+	    this.searchValue(value);
+	}
     }
 
+    changePage(newPage) {
+	this.setState({
+	    page: newPage
+	});
+    }
+
+    search() {
+	if (this.state.search.trim() !== '') {
+	    this.setState({
+	    page: 1
+	    });
+	    this.searchValue(this.state.search);
+	}
+    }
+
+    searchValue(value) {
+	mDB.searchMovie({ query: value, page: this.state.page, language: 'pl-PL'}, (err, res) => {
+	    this.setState({
+		page: res.page,
+		total_pages: res.total_pages,
+		total_results: res.total_results,
+		list: res.results
+	    });
+	});
+    }
+
+    getMovieInfo(id) {
+	mDB.movieInfo({ id: id, language: 'pl-PL'}, (err, res) => {
+	    console.log(res);
+	});
+console.log(this.state.list);
+    }
+
+
     render() {
-	var genre = [
-	    "all",
-	    "movie",
-	    "tv shows",
-	    "people"
-	];
+	return (
+	    <div>
+		<SearchBox genre={this.state.genre} changeGenre={this.changeGenre} changeSearch={this.changeSearch} search={this.search}/>
+		<List list={this.state.list} onRecordClick={this.getMovieInfo}/>
+	    </div>
+	);
+/*
 	return (
 	    <div className="search">
 		<Dropdown list={genre} onChange={this.changeGenre} className='genreDropdown'/>
-		<SearchInput onChange={this.changeSearch}/>
+		<SearchInput onChange={this.changeSearch} onClick={this.search}/>
+		<List list={this.state.list}/>
 	    </div>
 	);
+*/
     }
 }
 export default App;

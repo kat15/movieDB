@@ -8,22 +8,24 @@
 .searchInput .fa-search {
   vertical-align: top;
   background-color: #0000FF;
-  padding: 5px;
+  padding: 7px 7px;
   position: absolute;
   top: 0;
   right: 0;
   border: 1px solid #0000FF;
+  color: #FFFFFF;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   cursor: pointer;
 }
 .searchInput .fa-search:hover {
-  padding: 4px 5px;
+  padding: 6px 7px;
   transform: scale(1.1);
   right: 1px;
+  color: #000000;
 }
 .searchInput input {
   width: 100%;
   border: 1px solid #0000FF;
-  padding: 6px 31px 5px 5px;
+  padding: 7px 31px 8px 5px;
 }
