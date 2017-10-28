@@ -79,20 +79,11 @@ console.log(this.state.list);
 
     render() {
 	return (
-	    <div>
+	    <div className='container'>
 		<SearchBox genre={this.state.genre} changeGenre={this.changeGenre} changeSearch={this.changeSearch} search={this.search}/>
 		<List list={this.state.list} onRecordClick={this.getMovieInfo}/>
 	    </div>
 	);
-/*
-	return (
-	    <div className="search">
-		<Dropdown list={genre} onChange={this.changeGenre} className='genreDropdown'/>
-		<SearchInput onChange={this.changeSearch} onClick={this.search}/>
-		<List list={this.state.list}/>
-	    </div>
-	);
-*/
     }
 }
 export default App;

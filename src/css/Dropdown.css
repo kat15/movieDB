@@ -33,7 +33,7 @@ li:last-child {
 .dropdown {
   position: relative;
 }
-.container {
+.dropdown .container {
   border: 1px solid #1C6BA0;
   background-color: #1C6BA0;
   color: #FFFFFF;
