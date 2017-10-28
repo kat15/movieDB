@@ -20,11 +20,12 @@ ul {
     &.show {
 	display: block;
 	position: absolute;
-	top: 30px;
+	top: 23px;
 	left: 0;
 	right: 0;
 	background: @color-list-background;
 	border: 1px solid @color-list-border;
+	z-index: 2;
     }
 }
 
@@ -55,7 +56,7 @@ li {
     border: 1px solid @color-container-border;
     background-color: @color-container-background;
     color: @color-container;
-    padding: 5px 8px;
+    padding: 7px 8px;
     cursor: pointer;
     border-radius: @dropdown-border-radius;
 }

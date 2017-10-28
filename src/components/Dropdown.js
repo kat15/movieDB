@@ -8,8 +8,8 @@ export default class Dropdown extends React.Component {
 	this.state = {
 	    className: `${props.className} dropdown`,
 	    show: false,
-	    list: props.list,
-	    selected: props.selected || (props.value || props.list[0]),
+	    list: props.list || [],
+	    selected: props.selected || (props.value || (props.list ? props.list[0] : '')),
 	    dropdownMouseClick: false
 	};
 	this.showHideDropdown = this.showHideDropdown.bind(this);

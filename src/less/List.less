@@ -1,0 +1,50 @@
+#movieList {
+    display: block;
+    margin-top: 13px;
+
+    &:after {
+	content: "";
+	display: block;
+	clear: both;
+    }
+
+    li {
+	float: left;
+	width: 50%;
+	text-align: center;
+	position: relative;
+	padding: 0;
+	height: 232px;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+
+	&:hover {
+	    transform: scale(1.1);
+	    z-index: 1;
+
+	    img {
+		-webkit-filter: grayscale(100%);
+		filter: grayscale(100%);
+	    }
+
+	    .text {
+		bottom: 0;
+		top: 50%;
+	    }
+	}
+    }
+
+    img {
+	max-width: 100%;
+	height: auto;
+    }
+
+    .text {
+	position: absolute;
+	bottom: -100vh;
+	left: 0;
+	right: 0;
+	font-size: 1.5rem;
+	color: #FFFFFF;
+    }
+}
