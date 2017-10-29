@@ -1,20 +1,17 @@
 @import "colors";
-@dropdown-border-radius: 10px 0 0 10px;
-@suggester-border-radius: 9px;
-@suggester-first-child-border-radius: 6px 0 0 0;
-@suggester-last-child-border-radius: 0 0 6px 6px;
+@import "variables";
 
 ul {
   display: none;
   list-style-type: none;
   margin: 0;
   padding: 0;
-  border-radius: @suggester-border-radius;
+  border-radius: @theme-suggester-border-radius;
 
   &.show {
     display: block;
     position: absolute;
-    top: 23px;
+    top: 26px;
     left: 0;
     right: 0;
     background: @theme-color-list-background;
@@ -34,11 +31,11 @@ li {
   }
 
   &:first-child {
-    border-radius: @suggester-first-child-border-radius;
+    border-radius: @theme-suggester-first-child-border-radius;
   }
 
   &:last-child {
-    border-radius: @suggester-last-child-border-radius;
+    border-radius: @theme-suggester-last-child-border-radius;
   }
 }
 
@@ -49,9 +46,13 @@ li {
     border: 1px solid @theme-color-container-border;
     background-color: @theme-color-container-background;
     color: @theme-color;
-    padding: 7px 8px;
+    padding: 7px 8px 8px 8px;
     cursor: pointer;
-    border-radius: @dropdown-border-radius;
+    border-radius: @theme-dropdown-border-radius;
+  }
+
+  ul {
+    display: none;
   }
 }
 

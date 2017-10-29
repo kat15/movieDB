@@ -38,7 +38,7 @@ export default class Dropdown extends React.Component {
     }
 
     pageClick(e) {
-        if (this.dropdownMouseClick) {
+        if (this.state.dropdownMouseClick) {
             return;
         }
 
@@ -48,11 +48,15 @@ export default class Dropdown extends React.Component {
     }
 
     mouseDownHandler() {
-        this.dropdownMouseClick = true;
+        this.setState({
+            dropdownMouseClick: true
+        });
     }
 
     mouseUpHandler() {
-        this.dropdownMouseClick = false;
+        this.setState({
+            dropdownMouseClick: false
+        });
     }
 
     render() {
@@ -61,10 +65,13 @@ export default class Dropdown extends React.Component {
                 <div className='container' onClick={this.showHideDropdown}>
                     {this.state.selected}<span className='fa fa-sort icon'/>
                 </div>
+                {this.state.show}
                 <ul className={this.state.show ? 'show' : ''}>
                     {this.state.list.map((object, i) => {
                         return <li key={i} onClick={e => this.selectDropdown(i)}>
-                            {object}
+                            <span>
+                                {object}
+                            </span>
                         </li>
                     })}
                 </ul>

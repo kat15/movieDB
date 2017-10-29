@@ -1,8 +1,10 @@
 import React from 'react';
-import SearchInput from './SearchInput';
-import Dropdown from './Dropdown';
+import Search from './Search';
 import Logo from './Logo';
 import './../css/Menu.css';
+import {
+    Link
+} from 'react-router-dom';
 
 export default class Menu extends React.Component {
 
@@ -25,11 +27,11 @@ export default class Menu extends React.Component {
     }
 
     changeGenre(event) {
-        this.props.changeGenre(event.target.value);
+        this.props.changeGenre(event);
     }
 
     changeSearch(event) {
-        this.props.changeSearch(event.target.value);
+        this.props.changeSearch(event);
     }
 
     search(event) {
@@ -39,34 +41,34 @@ export default class Menu extends React.Component {
     render() {
         return (
             <div id='menuBar'>
-                <div class='header'>
+                <div className='header'>
                     <Logo headerText='MovieDB React template'/>
-                    <div class='button' onClick={this.openCloseMenu}>
-                        <span class='icon-bar'></span>
-                        <span class='icon-bar'></span>
-                        <span class='icon-bar'></span>
+                    <div className='button' onClick={this.openCloseMenu}>
+                        <span className='icon-bar'></span>
+                        <span className='icon-bar'></span>
+                        <span className='icon-bar'></span>
                     </div>
                 </div>
                 <div className={this.state.isMenuOpened ? 'collapse opened' : 'collapse'}>
                     <ul>
-                        <li>
-                            <a href="">HOME</a>
+                        <li className="selected">
+                            <Link to='/home'>HOME</Link>
                         </li>
                         <li>
-                            <a href="">MOVIES</a>
+                            <Link to='/movies'>MOVIES</Link>
                         </li>
                         <li>
-                            <a href="">PEOPLE</a>
+                            <Link to='/people'>PEOPLE</Link>
                         </li>
                         <li>
-                            <a href="">NEWS</a>
+                            <Link to='/news'>NEWS</Link>
                         </li>
                         <li>
-                            <a href="">ABOUT</a>
+                            <Link to='/about'>ABOUT</Link>
                         </li>
                     </ul>
-                    {/*<Dropdown list={this.state.genre} onChange={this.changeGenre} className='genreDropdown'/>*/}
-                    <SearchInput onChange={this.changeSearch} onClick={this.search}/>
+                    <Search list={this.state.genre} onChange={this.changeSearch} changeGenre={this.changeGenre}
+                            onClick={this.search}/>
                 </div>
             </div>
         );

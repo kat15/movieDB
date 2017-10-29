@@ -1,11 +1,20 @@
 import React from 'react';
 import Menu from './components/Menu';
-import List from './components/List';
-import Settings from './Settings';
+import Footer from './components/Footer';
 
-const mDB = require('moviedb')(Settings.apiKey);
+import {
+    BrowserRouter as Router,
+    Route
+} from 'react-router-dom'
 
-class App extends React.Component {
+import MainSite from './sites/MainSite';
+import AboutSite from './sites/AboutSite';
+import SearchSite from './sites/SearchSite';
+import PeopleSite from './sites/PeopleSite';
+import MovieSite from './sites/MovieSite';
+import NewsSite from './sites/NewsSite';
+
+export default class App extends React.Component {
 
     constructor(props) {
         super(props);
@@ -18,6 +27,7 @@ class App extends React.Component {
             ],
             selectedGenre: 'all',
             search: '',
+            language: 'pl-PL',
             list: [],
             page: 1,
             total_pages: 1,
@@ -25,8 +35,6 @@ class App extends React.Component {
         };
         this.changeGenre = this.changeGenre.bind(this);
         this.changeSearch = this.changeSearch.bind(this);
-        this.search = this.search.bind(this);
-        this.getMovieInfo = this.getMovieInfo.bind(this);
     }
 
     changeGenre(newGenre) {
@@ -40,7 +48,8 @@ class App extends React.Component {
             search: value
         });
         if (value.trim() !== '') {
-            this.searchValue(value);
+            this.checkWhatSearch(value);
+            // this.searchAll(value);
         }
     }
 
@@ -50,43 +59,20 @@ class App extends React.Component {
         });
     }
 
-    search() {
-        if (this.state.search.trim() !== '') {
-            this.setState({
-                page: 1
-            });
-            this.searchValue(this.state.search);
-        }
-    }
-
-    searchValue(value) {
-        mDB.searchMovie({query: value, page: this.state.page, language: 'pl-PL'}, (err, res) => {
-            this.setState({
-                page: res.page,
-                total_pages: res.total_pages,
-                total_results: res.total_results,
-                list: res.results
-            });
-        });
-    }
-
-    getMovieInfo(id) {
-        mDB.movieInfo({id: id, language: 'pl-PL'}, (err, res) => {
-            console.log(res);
-        });
-        console.log(this.state.list);
-    }
-
-
     render() {
         return (
-            <div className='container'>
-                <Menu genre={this.state.genre} changeGenre={this.changeGenre} changeSearch={this.changeSearch}
-                        search={this.search}/>
-                <List list={this.state.list} onRecordClick={this.getMovieInfo}/>
-            </div>
+            <Router>
+                <div className='container'>
+                    <Menu genre={this.state.genre} changeGenre={this.changeGenre} changeSearch={this.changeSearch}/>
+                    <Route exact path='/' component={MainSite}/>
+                    <Route path='/search/:genre/:query/:page?' component={SearchSite}/>
+                    <Route path='/about' component={AboutSite}/>
+                    <Route path='/movie/:id?' component={MovieSite}/>
+                    <Route path='/people' component={PeopleSite}/>
+                    <Route path='/news' component={NewsSite}/>
+                    <Footer/>
+                </div>
+            </Router>
         );
     }
 }
-
-export default App;

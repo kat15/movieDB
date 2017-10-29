@@ -14,12 +14,12 @@ export default class Logo extends React.Component {
     render() {
         return this.state.logo ? (
             <div id='logo'>
-                <a href={this.state.headerLink}>
-                    <img src={this.state.logo}/>
+                <a href='/'>
+                    <img src={this.state.logo} alt={this.state.headerText}/>
                 </a>
             </div>
         ) : (
-            <a id='logo' href={this.state.headerLink}>{this.state.headerText}</a>
+            <a id='logo' href='/'>{this.state.headerText}</a>
         );
     }
 }
