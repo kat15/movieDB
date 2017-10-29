@@ -8,11 +8,11 @@ ul {
 ul.show {
   display: block;
   position: absolute;
-  top: 23px;
+  top: 26px;
   left: 0;
   right: 0;
   background: #FFFFFF;
-  border: 1px solid #1C6BA0;
+  border: 1px solid rgba(0, 0, 0, 0.15);
   z-index: 2;
 }
 li {
@@ -21,7 +21,7 @@ li {
 }
 li:hover {
   font-weight: bold;
-  background: #1C6BA0;
+  background: #286090;
   color: #FFFFFF;
 }
 li:first-child {
@@ -33,13 +33,16 @@ li:last-child {
 .dropdown {
   position: relative;
 }
-.container {
-  border: 1px solid #1C6BA0;
-  background-color: #1C6BA0;
+.dropdown .container {
+  border: 1px solid #204d74;
+  background-color: #286090;
   color: #FFFFFF;
-  padding: 7px 8px;
+  padding: 7px 8px 8px 8px;
   cursor: pointer;
-  border-radius: 10px 0 0 10px;
+  border-radius: 0 4px 4px 0;
+}
+.dropdown ul {
+  display: none;
 }
 .icon {
   position: absolute;

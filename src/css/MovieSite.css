@@ -1,0 +1,9 @@
+#movie {
+  border-radius: 4px;
+  background: #FFFFFF;
+}
+#movie .top {
+  border-radius: 4px;
+  background: #E5E5E5;
+  height: 128px;
+}

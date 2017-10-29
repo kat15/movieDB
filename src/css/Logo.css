@@ -1,0 +1,11 @@
+#logo {
+  display: inline-block;
+  padding: 15px 15px;
+  line-height: 1.250rem;
+  color: #FFFFFF;
+  font-weight: 700;
+  text-shadow: 0 1px 1px #476784;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.375rem;
+  float: left;
+}

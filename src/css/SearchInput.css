@@ -1,31 +1,54 @@
 .searchInput {
-  display: table-cell;
-  width: 75%;
-  vertical-align: top;
   position: relative;
-  overflow: hidden;
-}
-.searchInput .fa-search {
-  vertical-align: top;
-  background-color: #0000FF;
-  padding: 7px 7px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  border: 1px solid #0000FF;
-  color: #FFFFFF;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  cursor: pointer;
-}
-.searchInput .fa-search:hover {
-  padding: 6px 7px;
-  transform: scale(1.1);
-  right: 1px;
-  color: #000000;
+  padding: 10px 15px;
+  margin-top: 8px;
+  margin-right: -15px;
+  margin-bottom: 8px;
+  margin-left: -15px;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 .searchInput input {
+  max-width: 160px;
   width: 100%;
-  border: 1px solid #0000FF;
-  padding: 7px 31px 8px 5px;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  border-radius: 4px 0 0 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+@media (min-width: 768px) {
+  .searchInput {
+    float: right !important;
+    width: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-right: 0;
+    margin-left: 0;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  .searchInput input {
+    width: 50%;
+  }
+}
+@media (min-width: 1200px) {
+  .searchInput {
+    padding-right: 0;
+  }
+  .searchInput input {
+    padding-right: 42px;
+    max-width: 202px;
+  }
 }

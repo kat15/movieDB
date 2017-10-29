@@ -1,17 +1,203 @@
-#root {
-    max-width: 480px;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+@import "colors";
+@import "variables";
+
+@padding: 0 15px;
+
+body {
+  background-color: @theme-color-background;
+  font-family: 'Raleway', sans-serif;
 }
 
-.genreDropdown {
-    display: table-cell;
-    width: 25%;
-    vertical-align: top;
+#root {
+  padding-top: 15px;
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  width: auto;
+  margin: 0 auto;
+  padding: @padding;
 }
 
 .search {
-    display: table;
-    width: 100%;
+  display: table;
+  width: 100%;
+  background-color: @theme-color-top-bar;
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 20px;
+  border: 1px solid @theme-color-top-bar;
+  border-radius: 4px;
 }
+
+.box-container {
+  background-color: @theme-color-box-container;
+  background-size: contain;
+  border-radius: @theme-color-box-container-border-radius;
+  -webkit-box-shadow: 0 1px 1px @theme-color-box-container-shadow;
+  box-shadow: 0 1px 1px @theme-color-box-container-shadow;
+  padding: 30px;
+
+  .header {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.875rem;
+    color: @theme-color-box-container-header;
+    text-rendering: optimizelegibility;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .content {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.313rem;
+    font-weight: 200;
+    color: @theme-color-box-container-container;
+    margin-bottom: 15px;
+    line-height: 1.429em;
+  }
+
+  .button {
+    margin-top: 15px;
+  }
+}
+
+.button {
+  color: @theme-color-button;
+  border: 1px solid @theme-color-button-border;
+  background-color: @theme-color-button-background;
+  padding: 10px 16px;
+  font-size: 1.125rem;
+  line-height: 1.3333333;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#modal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+#loading {
+  position: relative;
+  z-index: 1;
+  min-height: 300px;
+  height: 100%;
+  //background: #222222;
+  border-radius: 4px;
+
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .loader-ring {
+    top: ~'calc(50% - 100px)';
+    left: 50%;
+    pointer-events: none;
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    border-radius: 0 100% 0 0;
+    border: 1px solid @theme-color-loading-ring;
+    border-width: 0 5px 0 0;
+    box-shadow: 5px 1px 2px -4px white, inset -4px 1px 3px -4px white;
+    transform-origin: 0 100%;
+    animation: rotate 1s linear infinite;
+
+    &:after {
+      position: absolute;
+      height: 1px;
+      width: 1px;
+      top: 100%;
+      left: ~'calc(100% + 2px)';
+      border-radius: 100%;
+      border-width: 0;
+      background: @theme-color-loading-ring;
+      box-shadow: 0 0 3px 5px @theme-color-loading-ring;
+      content: '';
+    }
+  }
+}
+
+#long-tail {
+  visibility: hidden;
+}
+
+.loadingButton {
+  position: absolute;
+  cursor: pointer;
+  min-width: 90px;
+  min-height: 90px;
+  line-height: 90px;
+  background: @theme-color-loading-button-background;
+  margin: auto auto;
+  top: ~'calc(50% - 50px)';
+  left: ~'calc(50% - 50px)';
+  text-align: center;
+  border-radius: 999px;
+  color: @theme-color-loading-button;
+  text-shadow: -1px -1px 0 rgba(255,255,255,0.8), 1px 1px 2px rgba(0,0,0,1);
+  font-family: sans-serif;
+  box-shadow: inset 1px 1px 2px rgba(255,255,255,0.3),
+              inset 3px 15px 45px rgba(255,255,255,0.1),
+              inset -1px -1px 2px rgba(0,0,0,0.5),
+              inset -3px -15px 45px rgba(0,0,0,0.2),
+              1px 5px 30px -4px rgba(0,0,0,1);
+  transition: 0.1s ease-out;
+
+  &:before {
+    content: "";
+    cursor: pointer;
+    background: #1A1A1A;
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    z-index: -99;
+    border-radius: 999px;
+    box-shadow: inset -1px -1px 2px rgba(255,255,255,0.3),
+                inset -5px -15px 40px rgba(255,255,255,0.1),
+                inset 1px 1px 2px rgba(0,0,0,0.5),
+                inset 5px 15px 40px rgba(0,0,0,0.2),
+                -2px -40px 50px -20px rgba(255,255,255,0.1),
+                2px 35px 50px -10px rgba(0,0,0,0.4),
+                0 0 25px 8px rgba(60,60,60,1);
+  }
+
+  &:active {
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.15);
+    box-shadow: inset 1px 1px 2px rgba(255,255,255,0.3),
+                inset 3px 15px 45px rgba(0,0,0,0.2),
+                inset -1px -1px 2px rgba(0,0,0,0.5),
+                inset -3px -15px 45px rgba(255,255,255,0.1),
+                1px 5px 10px -4px rgba(0,0,0,1);
+  }
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@import "desktop/Index";

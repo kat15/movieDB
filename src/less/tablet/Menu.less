@@ -1,0 +1,59 @@
+@media(min-width:768px) {
+
+  #menuBar {
+
+    .genreDropdown {
+      width: 120px;
+    }
+
+    .button {
+      display: none;
+    }
+
+    .header {
+      float: left;
+      width: auto;
+    }
+
+    .collapse {
+      padding-left: 15px;
+      padding-right: 15px;
+      border-top: 0;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      display: block!important;
+      height: auto!important;
+      padding-bottom: 0;
+      overflow: visible!important;
+
+      &:after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+    }
+
+    ul {
+      float: left;
+      margin: 0;
+
+      &.show {
+        top: 32px;
+      }
+    }
+
+    li {
+      padding: 0;
+      float: left;
+
+      a {
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+    }
+
+    .searchInput {
+      border: 0;
+    }
+  }
+}

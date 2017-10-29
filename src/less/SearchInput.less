@@ -1,40 +1,36 @@
-@color-input-border: #0000FF;
-@color-search-icon: #FFFFFF;
-@color-search-icon-background: #0000FF;
-@color-search-icon-border: #0000FF;
+@import "colors";
+@import "variables";
 
 .searchInput {
-    display: table-cell;
-    width: 75%;
-    vertical-align: top;
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  padding: 10px 15px;
+  margin-top: 8px;
+  margin-right: -15px;
+  margin-bottom: 8px;
+  margin-left: -15px;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1);
 
-    .fa-search {
-	vertical-align: top;
-	background-color: @color-search-icon-background;
-	padding: 7px 7px;
-	position: absolute;
-	top: 0;
-	right: 0;
-	border: 1px solid @color-search-icon-border;
-	color: @color-search-icon;
-
-	-webkit-transition: all 0.5s;
-	transition: all 0.5s;
-	cursor: pointer;
-
-	&:hover {
-	    padding: 6px 7px;
-	    transform: scale(1.1);
-	    right: 1px;
-	    color: #000000;
-	}
-    }
-
-    input {
-	width: 100%;
-	border: 1px solid @color-input-border;
-	padding: 7px 31px 8px 5px;
-    }
+  input {
+    max-width: 160px;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555555;
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: @theme-search-border-radius;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  }
 }
+
+@import "tablet/SearchInput";
+@import "desktop/SearchInput";

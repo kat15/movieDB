@@ -1,98 +1,78 @@
 import React from 'react';
-import SearchBox from './components/SearchBox';
-import List from './components/List';
-import Settings from './Settings';
+import Menu from './components/Menu';
+import Footer from './components/Footer';
 
-const mDB = require('moviedb')(Settings.apiKey);
-class App extends React.Component {
+import {
+    BrowserRouter as Router,
+    Route
+} from 'react-router-dom'
+
+import MainSite from './sites/MainSite';
+import AboutSite from './sites/AboutSite';
+import SearchSite from './sites/SearchSite';
+import PeopleSite from './sites/PeopleSite';
+import MovieSite from './sites/MovieSite';
+import NewsSite from './sites/NewsSite';
+
+export default class App extends React.Component {
 
     constructor(props) {
-	super(props);
-	this.state = {
-	    genre: [
-		"all",
-		"movie",
-		"tv shows",
-		"people"
-	    ],
-	    selectedGenre: 'all',
-	    search: '',
-	    list: [],
-	    page: 1,
-	    total_pages: 1,
-	    total_results: 0
-	};
-	this.changeGenre = this.changeGenre.bind(this);
-	this.changeSearch = this.changeSearch.bind(this);
-	this.search = this.search.bind(this);
-	this.getMovieInfo = this.getMovieInfo.bind(this);
+        super(props);
+        this.state = {
+            genre: [
+                'all',
+                'movie',
+                'tv shows',
+                'people'
+            ],
+            selectedGenre: 'all',
+            search: '',
+            language: 'pl-PL',
+            list: [],
+            page: 1,
+            total_pages: 1,
+            total_results: 0
+        };
+        this.changeGenre = this.changeGenre.bind(this);
+        this.changeSearch = this.changeSearch.bind(this);
     }
 
     changeGenre(newGenre) {
-	this.setState({
-	    selectedGenre: newGenre
-	});
+        this.setState({
+            selectedGenre: newGenre
+        });
     }
 
     changeSearch(value) {
-	this.setState({
-	    search: value
-	});
-	if (value.trim() !== '') {
-	    this.searchValue(value);
-	}
+        this.setState({
+            search: value
+        });
+        if (value.trim() !== '') {
+            this.checkWhatSearch(value);
+            // this.searchAll(value);
+        }
     }
 
     changePage(newPage) {
-	this.setState({
-	    page: newPage
-	});
+        this.setState({
+            page: newPage
+        });
     }
-
-    search() {
-	if (this.state.search.trim() !== '') {
-	    this.setState({
-	    page: 1
-	    });
-	    this.searchValue(this.state.search);
-	}
-    }
-
-    searchValue(value) {
-	mDB.searchMovie({ query: value, page: this.state.page, language: 'pl-PL'}, (err, res) => {
-	    this.setState({
-		page: res.page,
-		total_pages: res.total_pages,
-		total_results: res.total_results,
-		list: res.results
-	    });
-	});
-    }
-
-    getMovieInfo(id) {
-	mDB.movieInfo({ id: id, language: 'pl-PL'}, (err, res) => {
-	    console.log(res);
-	});
-console.log(this.state.list);
-    }
-
 
     render() {
-	return (
-	    <div>
-		<SearchBox genre={this.state.genre} changeGenre={this.changeGenre} changeSearch={this.changeSearch} search={this.search}/>
-		<List list={this.state.list} onRecordClick={this.getMovieInfo}/>
-	    </div>
-	);
-/*
-	return (
-	    <div className="search">
-		<Dropdown list={genre} onChange={this.changeGenre} className='genreDropdown'/>
-		<SearchInput onChange={this.changeSearch} onClick={this.search}/>
-		<List list={this.state.list}/>
-	    </div>
-	);
-*/
+        return (
+            <Router>
+                <div className='container'>
+                    <Menu genre={this.state.genre} changeGenre={this.changeGenre} changeSearch={this.changeSearch}/>
+                    <Route exact path='/' component={MainSite}/>
+                    <Route path='/search/:genre/:query/:page?' component={SearchSite}/>
+                    <Route path='/about' component={AboutSite}/>
+                    <Route path='/movie/:id?' component={MovieSite}/>
+                    <Route path='/people' component={PeopleSite}/>
+                    <Route path='/news' component={NewsSite}/>
+                    <Footer/>
+                </div>
+            </Router>
+        );
     }
 }
-export default App;
